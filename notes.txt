@@ -1,0 +1,697 @@
+- variable is container(memory block of ram) to store value.
+- memory block of ram stores binary value(e.g 4 -> 110)
+
+- int firstNo = 4;
+     int -> datatype
+     firstNo -> variable name/identifier
+     4 -> Literal/value stored
+
+- java is statically typed language.
+
+  DATATYPES: 
+  1) Primitive datatype
+  2) Non-primitive datatype
+
+1) Primitive datatype
+   I. Integer -> byte, short, int, long
+   II. Real no -> float, double
+   III. Character -> char
+   IV. Boolean -> boolean (either "true" or "false" only 2 values exists)
+
+- byte (8 bit), short(16 bit), int(32 bit), long(64 bit)  all these have different ranges.
+- Every num in java is signed num (can represent +ve and -ve num)
+- To find biggest num you can store in any bit formula is (2^n-1) 
+(e.g. 2 bit -> 2^2-1 = 4-1 = 3)
+
+- float(32 bit) also known as single precision, double(64 bit) also known as Double precision.
+- To use float you need to define "f" at end of num (java bydefault consider real num as double) e.g: float xyz = 10.24f
+
+- Char(16 bit) stores any unicode chars and its value is stored in binary format.
+     e.g: 'A' has the Unicode value 65 (ASCII value). Decimal 65 is stored as binary 0000000001000001.
+
+int x = 5; (declaration and defing)
+int x; (declaration)
+x = 5; (definition)
+
+- KEYWORDS: words that we can't use by any means (reserved words by PL) in java there are total 68 keywords.
+
+
+------------------------------------------------------------------------------ Day2 ----------------------------------------------------------------------------------
+
+HAW TO STORE -VE NUM IN JAVA?
+
+ suppose we have to store -42 
+ we will store it in form of 2's complement
+ e.g  
+     byet num = -42  (first consider -42 as 42 then drow it's binary which is)
+     since its 8 bytes(byte has 8 bit val) =  0 0 1 0 1 0 1 0
+     now it's 1st complement = 1 1 0 1 0 1 0 1
+     now 2nd complement(+1) =  1 1 0 1 0 1 1 0
+     so java will store this binary value as -42 in variable.
+
+     NAW let's understand haw java will retrive this value as -42?
+
+     java or system will check your MSB(most significant bit) and LST (least significant bit) 
+     in this example   1(msb)   1 0 1 0 1 1   0(lsb)
+     so java says if your msb = 1 then its -ve num and if  msb = 0 then its +ve number.
+
+
+HAW TO REPRESENT FLOATING NUM?
+    suppose f = 8.125f 
+    float has 32 bit (in float these 32 divided into following ways)
+
+    1st bit  |         8 bits            |          23 bits       => 32 bit
+   (sign bit)       (exponent)                    (Mantissa)
+   
+   Naw let's come back to aur example
+   float f = 8.125f;
+   step 1) 
+          convert 8 & .125 to binary 
+          for 8 its simple (1000)
+          for 0.125 = 0.125 * 2 = 0.25 -> 0
+                                  -
+          0.25  = 0.25 * 2 = 0.5 -> 0
+                             -
+          0.5   = 0.5 * 2 = 1.0 -> 1
+                            -
+          as soon as you get 1 make it 0
+          0.0 there is nothing like 0.0
+          so binary for .125 is (001) read top to down
+
+          float f = 8.125f;
+          final binary is 1000.001
+  
+  step 2)   
+       make it in form of  (1.xxxxx...)*2^exp
+       1.000001 * 2^3
+  step 3) 
+       Add Bias to exponent
+       for float bias = 127
+       3 + 127 = 130 
+       binary of 130 =  10000010
+  step 4)
+       place value in memory
+       1.000001 * 2^3 In this 000001 this part is your mantissa
+
+           0  |         10000010            |          000001000000..(remaining is 0) 
+       (sign bit)      (exponent)                    (Mantissa)
+
+
+  Calculate the final value to represent (following formula is used)
+  Formula:  Value = (−1)^sign × Significand × 2^exponent
+                  = (−1)^0 × 1.015625 × 2³ ---------------------->  (1.000001 = 1 + 1/64 = 1.015625)
+                  = 8.125
+
+
+
+------------------------------------------------------------------------------ Day3 -----------------------------------------------------------------------------------
+
+TYPE CONVERSION AND TYPE PROMOTIONS
+
+Two types:
+ 1) Implicit (Automatic by java)
+     - Rule for implicit conversion: Destinition datatype should be wider than source datatype.(e.g. byte -> int)
+     - These types of conversions are also known as "wideing conversion".
+ 2) Explicit (Manualy by programmer)
+     - Destinition datatype should be smaller than source datatype. (int -> byte)
+     - Done by process of casting.
+     - These types of conversions are also known as "narrowing conversion".
+
+     e.g int i = 300;
+         byte b;
+         b = (byte)i;
+
+
+------------------------------------------------------------------------------ Day4 -----------------------------------------------------------------------------------
+
+JAVA OPERATORS
+  1) Arithmetic Operators (+, -, /, %, *, +=, -=, /=, %= , *=, ++, --)
+  2) Relational Operators (==, !=, <, >, <=, >=)
+  3) Bitwise Operators (&, |, ^, ~, >>, <<, >>>, &=, |=, ^=, >>=, <<=,  >>>= )
+      ~ is unary operator(works for only one operand e.g. ~a). Reverse the value
+      ^ odd no of one's (e.g. 0 1  = 1, 1 0 = 1)
+      to calculate any LEFT SHIFT formula is (a << n = a * 2^n) example : 7 << 3 = 7 * (2^3) = 7 * 8 = 56
+      to calculate any RIGHT SHIFT formula is (a >> n = a / 2^n) example : 7 >> 3 = 7 / (2^3) = 7 / 8 = 0.875
+
+
+  "=" means you are assigning value of RHS to LHS
+
+
+
+
+
+
+------------------------------------------------------------------------------ Day5 -----------------------------------------------------------------------------------
+FOR, WHILE, DO-WHILE, BREAK, CONTINUE
+
+WHILE LOOP:
+   1. Definition: Executes a block repeatedly as long as the condition is `true`.
+   2. Syntax:
+      while (condition) { // statements }
+   3. Execution order: Initialize variable → check condition → execute body → update variable → check condition again.
+   4. Condition: Checked before every iteration. If initially `false`, the body executes zero times.
+   5. Initialization: Usually done before the loop; sets the starting value.
+      int i = 1;
+   6. Update: Changes the variable to eventually terminate the loop. Forgetting it may cause an infinite loop.
+      i++;
+   7. Pre-increment vs post-increment:
+      - ++i: increments first, then uses the new value.
+      - i++: uses the old value, then increments.
+      - In while (i++ <= 10), the old value is compared, but the loop body sees the incremented value.
+   8. Loop termination: Stops when the condition becomes `false`. `break` exits immediately; `continue` skips the remaining body and starts the next iteration.
+   9. Infinite loop: Happens when the condition never becomes `false`.
+       while (true) {}
+   10. Practical uses: Repeating until user input is valid, processing data until it ends, menu-driven programs, and loops where the number of iterations is unknown.
+   11. Common mistake: A semicolon immediately after `while (condition);` creates an empty loop body.
+
+
+
+From here we are starting those 19 videos imp to learn for selenium.....!
+------------------------------------------------------------------------------ Day6 -----------------------------------------------------------------------------------
+
+📌 JAVA FUNCTIONS DEEP DIVE | RECURSION | METHOD OVERLOADING
+
+
+➤ FUNCTIONS 
+     - function is block of code use to perform repeated activities
+     - Return type of fun is basically datatype of fun.
+     - arguments pass, parameters receive
+     - mostly we create method out side the main() method
+
+* types of fun
+   I.no inp no output
+example:
+static void greet(){           
+   system.out.println("Hello")
+}
+
+   II. inp no ouput
+example:
+static void greet(String name){
+   system.out.println("Hello" + name)
+}
+
+   III. no inp but output
+example:
+static int greet(){
+   return 10;
+}
+
+   IV. inp and output
+example:
+static int greet(String name){
+   system.out.println(name);
+}
+greet("Rajesh")
+
+
+   - When method does not return anyting then we use "void" keyword.
+   - Use "static" when you want to call method without creating an object of an class.
+
+➤ Method overloading:
+   - Same function name bt diff parameters.
+   - on the basis of arguments functions are differentiated.
+
+* Chaining of functions:
+* Scope of variable:
+    I. Local Scope
+   II. Global Scope: define outside the main with "static" keyword.
+
+➤ Recursion:
+   - method calls itself.
+   - In recursion "BASE CASE" is used to stop recursion.
+   - "RECURSIVE CALL" to achieve recursion(method call itself).
+   
+
+
+
+📌 OOP's | CLASSES, OBJECT | NEW KEYWORD #12
+
+* Problems when you create random variables
+ Lets take an ex of student
+   I. Need a lot of independent var to represend single student.
+   II. Need to pass attributes for all variables decleared cant miss any it will throw error.
+   III. I need to create new set of variables for new students.
+   IV. No authority over data. (any one can access it).
+
+To solve such probles we use oop's
+
+* Defination: 
+   - Object Oriented Programming is imperative programming paradigm.
+   - Haw to perform the task useing objects, methods and statements.
+   - Organizes the software around objects rather than function and logic.
+   - Improves code re-usability.
+   - Makes code more readable.
+
+
+💡 OOPS is process of mimicing the real world in programming.
+
+Human -> can be student(if in school)
+      -> can be son/daugher
+      -> can be employee (if in office)
+
+
+➤ Class
+    - Class is blueprint of an object.
+    - Class is user defined datatype.
+    e.g. Student s1; 
+         - Student is user defined datatype.
+         - s1 is your referance variable.
+
+➤ Object
+   - Object is non-primitive datatype
+   - Object is instance of class created using user defined datatype.
+   e.g Student s1  = new Student();
+
+   Let's understand deeply
+   new :- "new" says to heap memory to create new object inside heap memory to store object named Student().
+        - once new object created it's address is stored inside s1 and your s1 variable is in stack memory. (of course stack stores the address/referances from heap)
+        - This space in heap memory allocates at run-time.
+
+💡 function/method is behaviour.
+
+ 
+
+------------------------------------------------------------------------------ Day7 -----------------------------------------------------------------------------------
+
+
+📌 CONSTRUCTOR CHAINING | OVERLOADING | THIS #13
+
+* Instance variable and Instance methods:
+    -  When we create an object of a class, that object is getting stored inside the heap memory. So, whatever the variables, methods we have defined inside class we          call them as an instance variable and instance methods.
+
+* Default values:
+   -  byte	0
+   -  short	0
+   -  int	0
+   -  long	0L
+   -  float	0.0f
+   -  double	0.0d
+   -  char	'\u0000'
+   -  boolean	false
+   -  Reference types (String, Objects, Arrays)	null
+
+Note- local variables do not have default values only instance variables have. due to scope limitation.
+
+
+➤ Constructor
+   - Constructor is special class member which automatically called when obj created.
+   - We can call constructor 2 ways :
+        1.Automatically when object created
+        2. Using THIS keyword
+   - We cannot call constructor manually.
+   - Use to provide defalut values to object's data member.(instance variables)
+   - Student s1  = new Student();
+     Student() this part helps to call constructor.
+
+* Rules of Constructor: 
+     I. Same name as class.
+    II. Does not have a return type, not even void.
+   III. Automatically called when obj created.
+    IV. Use to initilize object.
+     V. Can also overloaded.
+    VI. Java has default constructor.
+
+
+* Types of Constructors in java:
+      I. Default Constructor
+         - Will print default values.
+
+     II. Parameterized Constructor
+         - A constructor that has parameters is known as parameterized constructor.
+         - You pass the default values through object it self.
+           e.g. Student s1  = new Student("Rajesh",25,"Male");
+         - Naw if you try to call it again with 2nd object with no attributes it will throw error.
+         - In this case we use "constructor overloading".(create new constructor with diff parameters)
+
+     III. Private Constructor
+          - A private constructor cannot be accessed from outside the class.
+          - We use private keyword to define private constructor.
+          e.g. private class_name(){}
+          - Use inorder to provide security.
+          NOTE:- Private constructor can also accessed by other members from same class.
+               - In order to access private constructor, we need to create an object within same class.
+
+                 private Stud(){
+                      System.out.println("Hello Rajesh!");
+                 }
+                 static void displayMessage(){
+                   Stud s1  = new Stud();
+                 }
+                 class Main {
+                    public static void main(String[] args) {
+                    Stud.displayMessage();
+                 }
+
+
+     IV. Copy Constructor
+         - When we pass object referance to constructor then it is called as copy constructor.
+         - Used to copy entire content from one object to another object.
+         Syntax: 
+               class_name(class_name referance_name_can_be_anyting){}
+         - Now while creating objects.
+               class_name xyz1 = new class_name(); // main obj from which we have to copy data
+               class_name xyz2 = new class_name(xyz1) // pass object referance to constructor
+               
+
+➤ THIS Keyword
+    - Refer current obj.
+    - Refer instance variable.
+      e.g. this.name = name
+    - This keyword is also used in constructor chaining.(For code optimization)
+      e.g. Student(String name){
+              // This keyword will refer to constructor defined below, and will print the default values.
+              // Here we are also calling other constructor with this keywor HAW?
+              // Here 0 is not part of contractor is a part of the next constructor with help of that it will call next constructor.
+              this(name,0);
+           }
+           Student(String name, int age){
+              this(name, age, "unknown");
+           }
+           Output: Rajesh 0 null
+           Student(String name, int age, String gender){
+              this.name = name;
+              this.age = age;
+              this.gender = gender;
+           }
+     - THIS keyword must be first line.
+
+
+
+📌 STATIC AND FINAL | BLOCKS & STRING[] ARGS #15
+
+➤ Static variable / class variable
+   - Static keyword in java is used to "MEMORY MANAGEMENT" and "BELONGS TO CLASS" rather than object.
+   - Suppose we have hundreds of student objects, and all students belong to the same college.
+   - Instead of declaring college as an instance variable (which creates a separate copy for every student), we can declare it as a static variable.
+   - Static variables are stored in "METHOD AREA". (Class-level memory)
+
+   Syntax: 
+     static datatype variableName = literal;
+   e.g. 
+     static String college = "ZCOER";
+
+* Types Of Static Members:
+     I. static variables
+    II. static methods
+   III. static block
+        - Used to initilized static variables.
+        - Variable declared inside block has only block scope you cannot access them outside the block.
+        - Syntax:
+              static{}
+    IV. static nested class
+
+
+   NOTES:-
+      - Static runs first.
+      - Parameters of methods cannot be static cause they are already local variables.
+      - root class cannot be static but nested class can be static.
+
+
+* Rules of static method:
+     I. One static method only call other static method.
+    II. One static method can only access static variable.
+        NOTE:- It can access "instance variables" through an "object".(inside static method u will create an object)
+   III. Static methods don't have "this" or "super" keyword.(cause this keyword refers current object and "static" belongs to class not obj)
+
+
+
+
+➤ FINAL keyword
+   - Final keyword is used to restrict changes and make code more secure.
+   - It can be applied to variables, methods, and classes.
+   - Try to use uppercase while defining variable to "FINAL".
+    
+
+   NOTES : 
+      - Final variable cannot be reassigned .
+      - Final method cannot be overridden.
+      - Final class cannot be inherited.
+      - We can make parameters as final.
+
+- You can make any variable "static" and "final" both at time.
+
+
+
+------------------------------------------------------------------------------ Day8 -----------------------------------------------------------------------------------
+
+📌 ENCAPSULATION & INHERITANCE | JAVA PACKAGES & SUPER KEYWORD | #16
+
+➤ ENCAPSULATION
+     - It is a process of bundling data and methods into single unit.
+     - Both data and behaviour should be togethr(encapsulated) within an object.
+     - Restrict direct access and provides controlled ways to read and modify it.
+
+* Rules of Encapsulation:
+    - Declare data as private.
+    - Use getters and setters: Keep variables private and provide public getter and setter methods for controlled access and safe modification.
+    - Apply proper access modifiers.
+
+
+ NOTE: 
+   - Encapsulation does NOT mean completely preventing access to data. It means preventing direct access to var and providing less and restricted control over data by      using getters and setter.
+
+
+* ACCESS MODIFIERS
+     - Access modifirers used to control accessibility of classes, methods, and variables.
+      i.e.Who have access to var, method, constructor, class etc.
+
+     Types of Access modifiers:
+        I.Public
+          - Anyone can access everywhere.
+          - Can access from different package as well.
+          e.g. public static int add(int a, int b){}
+       II. Default
+          - Anyone can access from outside the class with same package 
+          - Cannot access from different package.
+          - Provides more access than private but less than protected and public.
+      III. Protected
+          - methods or data members declared as protected are accessible within the same package or subclasses(inherited) in different packages. 
+      IV. Private
+          - Cannot access outside the class.
+          - Cannot access from different package or even from different class with-in same package.
+          e.g. private String name;
+
+
+* Rules of Access Modifiers
+    - Root level classes cannot be private 
+         because they need to be accessible from other classes when required.
+    - Root level classes cannot be protected.
+         because Because Java allows only public and default access for top-level classes.	
+
+
+
+➤ JAVA PACKAGES 
+     - A package in Java is used to group related classes, interfaces, enums, and sub-packages.
+ 
+ * Types of Java Packages
+    I. User defined packages:
+       - These packages are created by the programmer.
+        e.g.
+          comp
+           ↪ myapp
+                ↪ Helper.java
+                    package comp.myapp;
+                    public class Helper{
+                      public static void show() {
+                           System.out.println("Hello from Helper!");
+                      }
+                    }  
+           ↪ Main.java
+                 import comp.myapp.Helper;
+                 public class Test {
+                    public static void main(String[] args) {
+                        Helper.show();
+                    }
+                 }
+      Package Declaration:
+      Syntax:
+          package packageName; 
+                
+   II. Built-in packages
+       - Built-in packages are provided by java API.
+       e.g. 
+         import java.util
+         import java.io
+
+
+
+
+➤ INHERITANCE (IS-A)
+     - 
+
+
+
+
+
+------------------------------------------------------------------------------ Day9 -----------------------------------------------------------------------------------
+
+📌 ABSTRACTION & POLYMORPHISM | ABSTRACT CLASS VS INTERFACES #17
+
+➤ ABSTRACTION 
+   - the process of focusing on what it does reather than or ignoring haw it does.
+   e.g. Car, ATM machine
+   - Represent whatever necessary and hide implementation details.
+   - In simple words:
+   What to do → Shown to the user.
+   How to do it → Hidden from the user.(Think with prespective of behivaur)
+   - Concrete : Means class or method with body.(How to do it implementation provided	)
+   
+
+* Types of abstraction:
+  I. Low level abstraction: 
+     - Shows more implementation details.
+ II. High level abstraction:
+     - Separate WHAT from HAW?
+     - We can achieve this abstraction with abstract class and interface.
+     - Hides more implementation details.
+
+
+* Rules of Abstraction:
+     I. An abstract class must be declared using the abstract keyword.
+    II. An abstract class cannot be instantiated directly.
+   III. If a class contains an abstract method, the class must be declared abstract.
+    IV. Abstract method cannot be private, static and final.
+     V. You have to extend the class to access the abstract class.
+    VI. In java multiple abstract class can extend one abstract class.
+   VII. Abstract method has no body; its implementation provided by child class.
+     
+   Syntax: abstract class car{
+                void start(){println("started")}
+                // These 2 abstract methods will accessed by 2 inherited concrete class (child class.)
+                abstract void accelerate();
+                abstract void break();
+           }
+           Then you create an object of its concrete child class, which implements the abstract methods.
+
+
+* Java Abstraction – Important Notes
+1.Why must a child class implement an abstract method?
+- If a parent class contains an abstract method, every concrete child class must implement it.
+- Otherwise, the child class must also be declared "abstract".
+- This ensures that child classes follow the contract defined by the parent class.
+
+2.Why do we use @Override?
+- @Override is optional but recommended(To find errors better and improve readibility).
+
+3.Difference between   "Car obj = new Car()"   and   "Vehicle obj = new Car()"
+- Car obj = new Car(): Child reference and child object. Can directly access methods available in the Car class and inherited methods.
+- Vehicle obj = new Car(): Parent reference and child object. Can directly access only methods available through the Vehicle reference.
+- The second approach is called "Upcasting" and is commonly used for "runtime polymorphism".
+
+
+
+
+➤ INTERFACES 
+   - Use to achieve abstraction and suppores multiple inheritance.
+   - Interface has nothing to do objects.
+   - Interface is an "contract".
+   - In java one class cannot extend multiple classes but it can implement multiple interfaces.
+   - child interface can access the all properties from parent interface, but parent interface cannot 
+     access any properties from child interface.
+   - Syntax:
+           interface Car{
+               void start();
+               void break();
+           }
+           class FuleCar implements Car{ -- body-- }
+           class EVCar implements Car{ -- body-- }
+           Main(){
+              Car c = new FuleCar()/EVcar()
+
+
+* Rules of interfaces:
+   I. You must provide definitions of all interface methods.
+  II. Cannot create it's object.
+ III. Interface must be declared using the interface keyword.
+  IV. Inside interface for "abstract methods" we cannot have body but for public private protected.
+   V. All interface methods are by default public so while declaring methods in implemented class it must be public.
+  VI. Interface variables are "public", "static", "final" by default
+ VII. interface does not support "protected" access modifier.
+
+QUE] Why Interface is an "contract"? 
+     - It defines a set of rules that classes must follow. 
+     - e.g. if we have FuelCar and ElectricCar classes, both must implement the methods declared in the Car interface.
+     - Real-life example: A bank defines certain rules and conditions for providing a loan. Anyone who wants a loan must follow those conditions.	
+
+
+➤ POLYMORPHISM 
+  - Poly -> many, Morphism -> forms
+  - Single entity can has many forms.
+  e.g. person
+           ↪ Can be father
+           ↪ Can be son
+           ↪ Can be grandFather
+
+* Types of polymorphism
+  I. Compile-Time Polymorphism (Static polymorphism/early binding)
+     - achieved through method overloading.
+     - Method selection occures at compile time. 
+     - It allows multiple methods to have the same name but different parameters.
+ II. Runtime Polymorphism (Dynamic polymorphism)
+     - achieved through method overriding.
+     - Method selection occures at runtime.
+     - In runtime polymorphism We CREATE PARENT CLASS REFERENCE not child class.
+     - Runtime polymorphism does not support the "private" access modifier.
+     - Runtime polymorphism does not support the "static" and "final" keywords.
+           WHY? : Static need early binding since it resolve in compile time.
+                : Class members defined with FINAL keyword cannot be override.
+
+
+
+
+
+------------------------------------------------------------------------------ Day10 ----------------------------------------------------------------------------------
+
+📌 JVM, JDK & JRE Explained | JSE vs JEE vs JME #2
+
+➤
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EXTRA NOTES: 
+
+1) Instance Initializer Block (IIB)
+    - An "Instance Initializer Block (IIB)" is a block of code inside a Java class that executes automatically whenever an object of that class is reated.
+
+2) Remember every method you define in main class make it static since "main" itself is static and static method can only access another static method.
+
+3) Static methods cannot be override.
+   Private methods cannot be override.
+   Anything with "Final" cannot be override.
+   Variables cannot be polymorphic.
+   
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
