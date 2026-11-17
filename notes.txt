@@ -529,7 +529,7 @@ Note- local variables do not have default values only instance variables have. d
 📌 ABSTRACTION & POLYMORPHISM | ABSTRACT CLASS VS INTERFACES #17
 
 ➤ ABSTRACTION 
-   - the process of focusing on what it does reather than or ignoring haw it does.
+   - the process of focusing on what it does rather than or ignoring haw it does.
    e.g. Car, ATM machine
    - Represent whatever necessary and hide implementation details.
    - In simple words:
@@ -551,7 +551,13 @@ Note- local variables do not have default values only instance variables have. d
      I. An abstract class must be declared using the abstract keyword.
     II. An abstract class cannot be instantiated directly.
    III. If a class contains an abstract method, the class must be declared abstract.
-    IV. Abstract method cannot be private, static and final.
+    IV. Some imp interview questions: 
+        ↪ Abstract class have constructor -> YES
+        ↪ Can abstract class be final ? -> NO
+        ↪ Can abstract class have static method/var? -> YES
+        ↪ Can abstract class have private methods? -> YES but not abstract
+        ↪ Can abstract class have final method/var? -> YES but not abstract
+        ↪ Can abstract class have no abstract method? -> YES (depends on use-case)
      V. You have to extend the class to access the abstract class.
     VI. In java multiple abstract class can extend one abstract class.
    VII. Abstract method has no body; its implementation provided by child class.
@@ -643,14 +649,61 @@ QUE] Why Interface is an "contract"?
 
 ------------------------------------------------------------------------------ Day10 ----------------------------------------------------------------------------------
 
-📌 JVM, JDK & JRE Explained | JSE vs JEE vs JME #2
+📌 AutoBoxing, Abstract classes & POJOs | Java Full Course #18
 
-➤
+Que] Why only one public in java file?
+   - main is static to run without building obj for jvm
+   - public is accessible outside package as well
+   - java file can has 1000+ files then haw jvm find in which class main exist so they build feature that main method should be defined in public class and public      class file name should be filename itself to abvoid confusion.
+   - so naw jvm directly find main method from public class and execute main method.
+
+➤ AutoBoxing & UnBoxing
+
+* First understand wrapper classes
+Q] What and Why wrapper class?
+   - A wrapper class in Java is a built-in class in the "java.lang" package that wraps a primitive data type inside an object.
+     e.g. ArrayList<Integer> numbers = new ArrayList<>();
+   - In java for each premative data type we have it's wrapper class
+     1) int = Integer
+     2) long = Long
+     3) short = Short
+     4) float = Float
+     5) double = Double
+     6) char = Character
+     7) boolean = Boolean
+   - Meny functionalities in java works only on classes e.g. Collection framework in java only works on classes not permative datatype.
+   - Wrappper provides extra features than permative.
+   - Then why to use normal premative datatype if wrapper classes are better?
+     1) Legecy - old lang have those so keep it.
+     2) Fast - Premative are fast then wrapper and time consuming.
 
 
 
+* AUTOBOXING & UNBOXING
+  ↪ AUTOBOXING 
+  - Premative automatically converts into wrapper
+  e.g. int x = 10;
+       Integer y = x;
+       here x will automatically converts into wrapper internally. this is known as AUTOBOXING.
+  - Haw converted?
+    java uses valueOf()
+    e.g. Integer y = Integer.valueOf(x); ------> in compile time
+  ↪ UNBOXING
+  - reverse of autoboxing
+    Integer x = 10;
+    int y = x;
+ 
+use cases: 
+   I. Assignments
+  II. Method calls
+ III. Artihmatic operations
 
 
+➤ POJO (Plain old java objects)
+- A simple java objects, does not depend on any specific frameworks or libraries.
+- A POJO typically contains private fields with corresponding getter and setter methods.
+- POJOs are commonly used to encapsulate data and represent entities in an application.
+- No need of hard coded business logic but you can.
 
 
 
@@ -680,7 +733,13 @@ EXTRA NOTES:
    Private methods cannot be override.
    Anything with "Final" cannot be override.
    Variables cannot be polymorphic.
-   
+  
+4) Java maintains integer cache values from range -128 to 127 
+   integer cache = already created integer objects
+   i.e. java has build obj for range numbers -128 to 127 default.
+   so it will not create obj for those values it will find then referance of already bilt objects. 
+
+
 
     
 

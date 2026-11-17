@@ -10,7 +10,7 @@ Video No.	Exact video title
 15	        Static & Final in Java | Static Methods, Blocks & String[] args	✔
 16	        Encapsulation & Inheritance in Java | Java Packages & Super Keyword ✔	
 17	        Abstraction & Polymorphism in Depth | Abstract Class vs Interfaces ✔	
-18	        AutoBoxing, Abstract classes & POJOs
+18	        AutoBoxing, Abstract classes & POJOs ✔
 25	        Java Strings | String Pool, Immutability, Internals
 26	        Java Strings Part 2 | All String Methods + StringBuilder vs StringBuffer
 27	        Java Generics Deep Dive | Bounded Types using extends
@@ -18,7 +18,7 @@ Video No.	Exact video title
 30	        Iterable Interface in Java | Why Iterator Exists? | For-Each Loop
 31	        Java Collection Interface Deep Dive | Methods & Internals
 32	        Java List Interface Deep Dive | ArrayList, LinkedList, Vector, Stack
-33	        Set & Map Interface in Java | Internal Working of HashMap, HashSet & TreeMa
+33	        Set & Map Interface in Java | Internal Working of HashMap, HashSet & TreeMap
 37	        Java Lambdas & Functional Interfaces | Comparator Interface
 43	        Java Exception Handling from Scratch | Exceptions vs Errors
 44	        Exception Hierarchy Deep Dive | throw vs throws | Custom Exceptions
