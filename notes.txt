@@ -707,6 +707,95 @@ use cases:
 
 
 
+------------------------------------------------------------------------------ Day11 ----------------------------------------------------------------------------------
+
+
+📌 JAVA STRINGS | STRING POOL, IMMUTABILITY, INTERNALS | Java Full Course #25
+
+➤ JAVA STRINGS
+   - String is sequence of char.
+   - String is nothing but char array.(since we store string sequence in array)
+   - under java.lang package.
+
+Q] why string is immutable?
+   1) Memory optimization:
+   - String literals are stored in special memory called STRING POOL.
+   - so multiple variables with same text has a single object in memory so updating one reference variable can lead to change rest of the variables as well.
+   e.g. 
+   String a = "hi";
+   String b = "hi";
+   String c = "hi";
+   here we have 3 diff var with same text so in string pool there will be only single obj representing "hi" (Memory optimization) changing a or b or c can lead to change other variable as well.
+   2)  Security:
+   - String can have sensitive data such as password, URL's, network connections so immutability ensures it can't be altered.
+   3) Hashcode Caching & Performance:
+   - Since string content cannot be changed hashcode value remains same/unchanged and cashed forever.
+
+
+➤ STRING POOL
+   - String pool is special area in heap memory.(part of heap memory)
+   - stores string literals.
+
+Q] Haw java stores a string?
+   Using string literal:
+   - Works in "compile-time".
+   - When a string is declared in Java, two separate memory areas are involved:
+   1. Stack: Stores the variable reference.
+   2. Heap (String Constant Pool): Stores the actual string object value.
+   String str1 = "Hello";
+   str1 stored in stack and "Hello" stored in  string constant pool inside heap.
+
+   Using new Keyword:
+   - Works in "run-time".
+   - Using the new keyword forces the JVM to create new objects in the heap outside the String Constant Pool.
+   String s1 = new String("abc");
+   String s2 = new String("abc");
+   here 2 diff objects will get created.
+
+
+➤ Problem Of IMMUTABILITY
+   - Waste of memory
+
+Internally string is nothing but char array(till java 9)
+after that java developers converted it into byte array
+pervious (till java 9) = private final char[] values
+naw = private final byte[] values;
+
+Q] Why char[] to byte[]:
+   - char has 2 bytes
+   - byte has 1 byte
+   - to store unicode we need 2 byte for ascii we need 1 byte
+   - Mostly in world we dont use unicode to store in string and instead we use ascii values.
+   e.g. String a = "राजेश"; (rarely used such kind of literals)
+        Sting a = "Rajesh"; (Mostly use)
+   - so developers converted char[] to byte[] with 50% memory consumption.
+   - But still there is a chance that some people will use this
+   String a = "राजेश";
+   So what we will do in this case?
+   - here comes the concept of private final byte coder.
+   - has only two values 0 and 1.
+   - for ascii, the value of coder is 0(LATIN FORMAT) for unicode it is 1(UTF-16 FORMAT).
+   - If value is 0 then coder tells JVM to read only 1 block from array
+   e.g. java = | j | a | v | a |
+   coder = 0 read only 1 block
+   - for code = 1 read 2 blocks 
+   e.g. राजेश =  | ? | ? | ? | ? | ? | ? | 
+   Like this  = | ? | ? |,  |  ? | ? |,  | ? | ? | 
+   ? = something unicode value.
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -738,6 +827,8 @@ EXTRA NOTES:
    integer cache = already created integer objects
    i.e. java has build obj for range numbers -128 to 127 default.
    so it will not create obj for those values it will find then referance of already bilt objects. 
+
+5) "==" refers to reference.(Will check reference not value)
 
 
 
