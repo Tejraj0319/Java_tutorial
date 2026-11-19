@@ -11,8 +11,8 @@ Video No.	Exact video title
 16	        Encapsulation & Inheritance in Java | Java Packages & Super Keyword ✔	
 17	        Abstraction & Polymorphism in Depth | Abstract Class vs Interfaces ✔	
 18	        AutoBoxing, Abstract classes & POJOs ✔
-25	        Java Strings | String Pool, Immutability, Internals
-26	        Java Strings Part 2 | All String Methods + StringBuilder vs StringBuffer
+25	        Java Strings | String Pool, Immutability, Internals ✔
+26	        Java Strings Part 2 | All String Methods + StringBuilder vs StringBuffer ✔
 27	        Java Generics Deep Dive | Bounded Types using extends
 29	        Java Collection Framework Explained | Data Structures + Complete Hierarchy
 30	        Iterable Interface in Java | Why Iterator Exists? | For-Each Loop

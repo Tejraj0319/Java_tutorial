@@ -788,26 +788,75 @@ Q] Why char[] to byte[]:
 
 
 
+------------------------------------------------------------------------------ Day12 ----------------------------------------------------------------------------------
+
+
+📌Java Strings Part 2 | ALL STRING METHODS + STRING BUILDER VS STRING BUFFER | Java Full Course #26
+
+➤ ALL STRING METHODS
+
+* Way of string declaration.
+   - String ;
+   - new String();
+   - new String(String);
+   - new String(char[]);
+   - new String(byte[]);
+   - new String(StringBuilder);
+   - new String(StringBuffer);
+
+* STRING METHODS
+  - 
+
+
+➤ STRING BUILDER VS STRING BUFFER
+   - from java.lang package
+   AbstractStringBuilder (Parent class)
+   ↪ StringBuilder : Not thread safe
+                     Can't avoid "race condition"
+                     Fast
+   ↪ StringBuffer : Thread safe.
+                     Avoids "race condition".
+                     Slow as compared to StringBuilder.
+
+   String builder creates extra spaces in array 
+   e.g. | j | a | v | a |  |  |  |  |  |  |
+
+   * Internally string builder has 
+   - count = 4 (java)
+   - capacity = Initial capacity of an array by string builder it is mostly 16 blocks.
+   Why extra capacity?
+   - If in future we need to append same string then instead of creating new obj just append the existing array.
+
+   once capacity is getting fill then stringbuilder automatically updates capacity.
+   - New Capacity = Old Capacity * 2 + 2
+   e.g. 16 initially
+        34 after updated
+   same applies for string buffer. 
+
+   or 
+
+
+   you can decide your own size
+   e.g. StringBuilder str = new StringBuilder(50);
+
+   why 16?
+   - maintains balance between memory efficiency and performance
+   - Preventing immediate memory reallocations.
+   - Avoiding wasted heap memory.
+
+💡 stringbuilder/stringbuffer don't have "Transformation" and "Comparison" methods of string. 
+
+💡 Stringbuffer str1 = new StringBuffer("XYZ");
+   Stringbuffer str2 = new StringBuffer("XYZ");
+   so str1.equals(str2)  -----> false;
+   why?
+   - Because stringbuilder/stringbuffer do not override .equals() method from Object class.
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
@@ -826,7 +875,7 @@ EXTRA NOTES:
 4) Java maintains integer cache values from range -128 to 127 
    integer cache = already created integer objects
    i.e. java has build obj for range numbers -128 to 127 default.
-   so it will not create obj for those values it will find then referance of already bilt objects. 
+   so it will not create obj for those values it will find then reference of already bit objects. 
 
 5) "==" refers to reference.(Will check reference not value)
 
