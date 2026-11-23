@@ -595,6 +595,10 @@ Note- local variables do not have default values only instance variables have. d
    - In java one class cannot extend multiple classes but it can implement multiple interfaces.
    - child interface can access the all properties from parent interface, but parent interface cannot 
      access any properties from child interface.
+     e.g.
+     interface Parent{}
+     interface Chile extends Parent{}
+
    - Syntax:
            interface Car{
                void start();
@@ -614,6 +618,8 @@ Note- local variables do not have default values only instance variables have. d
    V. All interface methods are by default public so while declaring methods in implemented class it must be public.
   VI. Interface variables are "public", "static", "final" by default
  VII. interface does not support "protected" access modifier.
+      Why?
+      The main reason is that interface methods are designed to be publicly accessible as part of the contract.
 
 QUE] Why Interface is an "contract"? 
      - It defines a set of rules that classes must follow. 
@@ -798,14 +804,14 @@ Q] Why char[] to byte[]:
 * Way of string declaration.
    - String ;
    - new String();
-   - new String(String);
+   - new String(str);
    - new String(char[]);
    - new String(byte[]);
    - new String(StringBuilder);
    - new String(StringBuffer);
 
 * STRING METHODS
-  - 
+  - 💡 check image for it..........................!
 
 
 ➤ STRING BUILDER VS STRING BUFFER
@@ -831,7 +837,8 @@ Q] Why char[] to byte[]:
    - New Capacity = Old Capacity * 2 + 2
    e.g. 16 initially
         34 after updated
-   same applies for string buffer. 
+   "SAME FOR APPLIES FOR STRING-BUFFER".
+
 
    or 
 
@@ -845,8 +852,8 @@ Q] Why char[] to byte[]:
    - Avoiding wasted heap memory.
 
 💡 stringbuilder/stringbuffer don't have "Transformation" and "Comparison" methods of string. 
-
-💡 Stringbuffer str1 = new StringBuffer("XYZ");
+e.g.
+   Stringbuffer str1 = new StringBuffer("XYZ");
    Stringbuffer str2 = new StringBuffer("XYZ");
    so str1.equals(str2)  -----> false;
    why?
@@ -855,7 +862,83 @@ Q] Why char[] to byte[]:
 
 
 
+------------------------------------------------------------------------------ Day13 ----------------------------------------------------------------------------------
 
+📌 Java Generics Deep Dive | Bounded Types using extends | Java Full Course #27
+➤ 
+   - Java is typed lang.
+   - there are rules to store the data.
+
+* UpCasting and DownCasting
+- UpCasting
+int x = 4;
+long y = x; // Implicit conversion
+- DownCasting
+long l = 12345678901234567890
+int x = (int)l; //explicit conversion
+
+
+➤ Generics
+   - On object you can store any type of data.(universal datatype)
+   - if you are creating an obj of any type then you cannot perform any operation on data stored in side it.
+   WHY?
+   - cause we don't know what kind of data stored in obj 
+   if boolean has stored then haw you will do true  + 5 (not possible).
+   
+   - but by using "DOWN-CASTING" is can possible
+   e.g. String x = (String) b1.getValue();
+        System.out.println(x+5);
+
+* Limitations of using Object as Universal Type: 
+   1) Naw this is not good way to handle things suppose data is sensitive then?
+   2) There might change of data loss.
+   3) Errors might shift to runtime.
+
+   That's haw GENERICS comes into picture
+   - Goal is same to store any kind of data without using Object.
+   - Take any capital letter and replace with Object keyword. (at all places)
+   e.g. private Object value;
+   then 
+        private T value;
+   - That letter is not your datatype it's placeholder.
+   - Any class you are treating as generic mention in front of that class in <> and in those brackets mention placeholder name, known as "Type Parameter".
+
+   e.g. class Box<T>{ //Type Parameter
+      private T value;
+      public T.getValue(){} // getter 
+      .
+      .
+      .
+   }
+
+   - Haw to create Obj?
+   Syntax:
+   Class_Name<wrapper_class_type> ref_name = new Class_Name<[wrapper_class_type]>(val);  // type argument
+   e.g. Box<Integer> b1 = new Box<>(10);
+
+
+   * Type Inference 
+     - In methods while using generics java implicitly decides the type of data while assigning value it is known as Type Inference.
+
+     e.g. printPair(10, "String");
+     public static <T,U> void printPair(T first, U second){}
+     in this case java will find out that T is int datatype and U is String datatype.
+
+
+➤ Bounds
+   - If you want to generic work on specific classes?
+   e.g. lets say work only on numbers, only on int, double, float etc
+   - Syntax: 
+     Box<Double> b1 = new Box<>();
+     class Box<T extends Number>{
+      T value;
+     }
+
+💡 Object is root parent class of any classes 
+e.g. class Animal{}
+     class Dog extends Animal{}
+     so internally java treats like
+     class Animal extends Object{}
 
 
 
@@ -863,7 +946,7 @@ Q] Why char[] to byte[]:
 EXTRA NOTES: 
 
 1) Instance Initializer Block (IIB)
-    - An "Instance Initializer Block (IIB)" is a block of code inside a Java class that executes automatically whenever an object of that class is reated.
+    - An "Instance Initializer Block (IIB)" is a block of code inside a Java class that executes automatically whenever an object of that class is rated.
 
 2) Remember every method you define in main class make it static since "main" itself is static and static method can only access another static method.
 
@@ -878,19 +961,5 @@ EXTRA NOTES:
    so it will not create obj for those values it will find then reference of already bit objects. 
 
 5) "==" refers to reference.(Will check reference not value)
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
 
 
