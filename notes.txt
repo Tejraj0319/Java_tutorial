@@ -253,7 +253,7 @@ Human -> can be student(if in school)
 
 ➤ Class
     - Class is blueprint of an object.
-    - Class is user defined datatype.
+    - Class & Objects are "USER DEFINED DATATYPE".
     e.g. Student s1; 
          - Student is user defined datatype.
          - s1 is your referance variable.
@@ -939,6 +939,66 @@ e.g. class Animal{}
      class Dog extends Animal{}
      so internally java treats like
      class Animal extends Object{}
+
+
+
+
+
+
+------------------------------------------------------------------------------ Day14 ----------------------------------------------------------------------------------
+
+📌 Java Collection Framework Explained | Data Structures + Complete Hierarchy | Java Full Course #29
+
+➤  Map<Integer, Integer> map = new HashMap<>();
+    - put(key, value)
+    - putIfAbsent(key, value)
+    - replace(key, value)
+    - get(key) : Get value using key
+
+    - containsKey(key) : Check key exists
+    - containsValue(value) : Check val exists
+
+    - isEmpty() : Check whether map is empty
+
+    - remove(key) : remove entry using key
+    - clear() : remove all
+
+    - size() : Get total key-value pairs
+    - getKey()
+    - getValue()
+    - keySet() : Get all keySet
+    - values() : Get all values
+    - entrySet() : Get all key-val pairs
+
+➤  Set<Integer> set = new HashSet<>();
+    - add(value)
+    - contains(value) : Check whether element exists
+    - isEmpty() : Check whether set is empty
+
+    - remove(value) : remove one element
+    - clear() : remove all elements
+
+    - size() : get total elements
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
