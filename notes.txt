@@ -8,7 +8,7 @@
 
 - java is statically typed language.
 
-  DATATYPES: 
+  DATA TYPES: 
   1) Primitive datatype
   2) Non-primitive datatype
 
@@ -24,12 +24,12 @@
 (e.g. 2 bit -> 2^2-1 = 4-1 = 3)
 
 - float(32 bit) also known as single precision, double(64 bit) also known as Double precision.
-- To use float you need to define "f" at end of num (java bydefault consider real num as double) e.g: float xyz = 10.24f
+- To use float you need to define "f" at end of num (java by default consider real num as double) e.g: float xyz = 10.24f
 
 - Char(16 bit) stores any unicode chars and its value is stored in binary format.
      e.g: 'A' has the Unicode value 65 (ASCII value). Decimal 65 is stored as binary 0000000001000001.
 
-int x = 5; (declaration and defing)
+int x = 5; (declaration and defining)
 int x; (declaration)
 x = 5; (definition)
 
@@ -43,13 +43,13 @@ HAW TO STORE -VE NUM IN JAVA?
  suppose we have to store -42 
  we will store it in form of 2's complement
  e.g  
-     byet num = -42  (first consider -42 as 42 then drow it's binary which is)
+     byte num = -42  (first consider -42 as 42 then draw it's binary which is)
      since its 8 bytes(byte has 8 bit val) =  0 0 1 0 1 0 1 0
      now it's 1st complement = 1 1 0 1 0 1 0 1
      now 2nd complement(+1) =  1 1 0 1 0 1 1 0
      so java will store this binary value as -42 in variable.
 
-     NAW let's understand haw java will retrive this value as -42?
+     NAW let's understand haw java will retrieve this value as -42?
 
      java or system will check your MSB(most significant bit) and LST (least significant bit) 
      in this example   1(msb)   1 0 1 0 1 1   0(lsb)
@@ -98,7 +98,7 @@ HAW TO REPRESENT FLOATING NUM?
 
 
   Calculate the final value to represent (following formula is used)
-  Formula:  Value = (−1)^sign × Significand × 2^exponent
+  Formula:  Value = (−1)^sign × significant × 2^exponent
                   = (−1)^0 × 1.015625 × 2³ ---------------------->  (1.000001 = 1 + 1/64 = 1.015625)
                   = 8.125
 
@@ -110,10 +110,10 @@ TYPE CONVERSION AND TYPE PROMOTIONS
 
 Two types:
  1) Implicit (Automatic by java)
-     - Rule for implicit conversion: Destinition datatype should be wider than source datatype.(e.g. byte -> int)
-     - These types of conversions are also known as "wideing conversion".
- 2) Explicit (Manualy by programmer)
-     - Destinition datatype should be smaller than source datatype. (int -> byte)
+     - Rule for implicit conversion: Destination datatype should be wider than source datatype.(e.g. byte -> int)
+     - These types of conversions are also known as "widening conversion".
+ 2) Explicit (Manually by programmer)
+     - Destination datatype should be smaller than source datatype. (int -> byte)
      - Done by process of casting.
      - These types of conversions are also known as "narrowing conversion".
 
@@ -185,7 +185,7 @@ static void greet(){
    system.out.println("Hello")
 }
 
-   II. inp no ouput
+   II. inp no output
 example:
 static void greet(String name){
    system.out.println("Hello" + name)
@@ -205,7 +205,7 @@ static int greet(String name){
 greet("Rajesh")
 
 
-   - When method does not return anyting then we use "void" keyword.
+   - When method does not return anything then we use "void" keyword.
    - Use "static" when you want to call method without creating an object of an class.
 
 ➤ Method overloading:
@@ -229,25 +229,25 @@ greet("Rajesh")
 
 * Problems when you create random variables
  Lets take an ex of student
-   I. Need a lot of independent var to represend single student.
-   II. Need to pass attributes for all variables decleared cant miss any it will throw error.
+   I. Need a lot of independent var to represented single student.
+   II. Need to pass attributes for all variables declared cant miss any it will throw error.
    III. I need to create new set of variables for new students.
    IV. No authority over data. (any one can access it).
 
-To solve such probles we use oop's
+To solve such problems we use oop's
 
-* Defination: 
+* Definition: 
    - Object Oriented Programming is imperative programming paradigm.
-   - Haw to perform the task useing objects, methods and statements.
+   - Haw to perform the task using objects, methods and statements.
    - Organizes the software around objects rather than function and logic.
    - Improves code re-usability.
    - Makes code more readable.
 
 
-💡 OOPS is process of mimicing the real world in programming.
+💡 OOPS is process of mimicking the real world in programming.
 
 Human -> can be student(if in school)
-      -> can be son/daugher
+      -> can be son/daughter
       -> can be employee (if in office)
 
 
@@ -256,7 +256,7 @@ Human -> can be student(if in school)
     - Class & Objects are "USER DEFINED DATATYPE".
     e.g. Student s1; 
          - Student is user defined datatype.
-         - s1 is your referance variable.
+         - s1 is your reference variable.
 
 ➤ Object
    - Object is non-primitive datatype
@@ -265,10 +265,10 @@ Human -> can be student(if in school)
 
    Let's understand deeply
    new :- "new" says to heap memory to create new object inside heap memory to store object named Student().
-        - once new object created it's address is stored inside s1 and your s1 variable is in stack memory. (of course stack stores the address/referances from heap)
+        - once new object created it's address is stored inside s1 and your s1 variable is in stack memory. (of course stack stores the address/references from heap)
         - This space in heap memory allocates at run-time.
 
-💡 function/method is behaviour.
+💡 function/method is behavior.
 
  
 
@@ -300,7 +300,7 @@ Note- local variables do not have default values only instance variables have. d
         1.Automatically when object created
         2. Using THIS keyword
    - We cannot call constructor manually.
-   - Use to provide defalut values to object's data member.(instance variables)
+   - Use to provide default values to object's data member.(instance variables)
    - Student s1  = new Student();
      Student() this part helps to call constructor.
 
@@ -308,7 +308,7 @@ Note- local variables do not have default values only instance variables have. d
      I. Same name as class.
     II. Does not have a return type, not even void.
    III. Automatically called when obj created.
-    IV. Use to initilize object.
+    IV. Use to initialize object.
      V. Can also overloaded.
     VI. Java has default constructor.
 
@@ -328,7 +328,7 @@ Note- local variables do not have default values only instance variables have. d
           - A private constructor cannot be accessed from outside the class.
           - We use private keyword to define private constructor.
           e.g. private class_name(){}
-          - Use inorder to provide security.
+          - Use in-order to provide security.
           NOTE:- Private constructor can also accessed by other members from same class.
                - In order to access private constructor, we need to create an object within same class.
 
@@ -345,13 +345,13 @@ Note- local variables do not have default values only instance variables have. d
 
 
      IV. Copy Constructor
-         - When we pass object referance to constructor then it is called as copy constructor.
+         - When we pass object reference to constructor then it is called as copy constructor.
          - Used to copy entire content from one object to another object.
          Syntax: 
-               class_name(class_name referance_name_can_be_anyting){}
+               class_name(class_name reference_name_can_be_anything){}
          - Now while creating objects.
                class_name xyz1 = new class_name(); // main obj from which we have to copy data
-               class_name xyz2 = new class_name(xyz1) // pass object referance to constructor
+               class_name xyz2 = new class_name(xyz1) // pass object reference to constructor
                
 
 ➤ THIS Keyword
@@ -361,7 +361,7 @@ Note- local variables do not have default values only instance variables have. d
     - This keyword is also used in constructor chaining.(For code optimization)
       e.g. Student(String name){
               // This keyword will refer to constructor defined below, and will print the default values.
-              // Here we are also calling other constructor with this keywor HAW?
+              // Here we are also calling other constructor with this keyword HAW?
               // Here 0 is not part of contractor is a part of the next constructor with help of that it will call next constructor.
               this(name,0);
            }
@@ -395,7 +395,7 @@ Note- local variables do not have default values only instance variables have. d
      I. static variables
     II. static methods
    III. static block
-        - Used to initilized static variables.
+        - Used to initialize static variables.
         - Variable declared inside block has only block scope you cannot access them outside the block.
         - Syntax:
               static{}
@@ -535,7 +535,8 @@ Note- local variables do not have default values only instance variables have. d
    - In simple words:
    What to do → Shown to the user.
    How to do it → Hidden from the user.(Think with prespective of behivaur)
-   - Concrete : Means class or method with body.(How to do it implementation provided	)
+
+💡 CONCRETE : Means class or method with body. ( How to do it implementation provided )
    
 
 * Types of abstraction:
@@ -934,11 +935,27 @@ int x = (int)l; //explicit conversion
       T value;
      }
 
-💡 Object is root parent class of any classes 
+💡 OBJECT IS ROOT PARENT CLASS of any classes 
 e.g. class Animal{}
      class Dog extends Animal{}
      so internally java treats like
      class Animal extends Object{}
+💡 Object is instance of class.
+   * Understand : 
+     e.g. Student s1 = new Student();
+     Student -> class
+     s1 -> ref variable
+     new -> Allocates memory for new object in heap
+     Student() -> Constructor
+     new Student()  -> In combine creates an object.
+
+     Visual representation:
+
+      Stack                 Heap
+   +-----------+       +----------------+
+   |    s1     | ----> |  Student       |
+   +-----------+       |  age = 22      |
+                       +----------------+
 
 
 
@@ -984,6 +1001,144 @@ e.g. class Animal{}
 
 
 
+------------------------------------------------------------------------------ Day14 ----------------------------------------------------------------------------------
+
+
+📌 Iterable Interface in Java | Why Iterator Exists? | For-Each Loop | Java Full Course #30
+
+➤ 2 Types of data structures: 
+   ↪ Order maintain
+     e.g.ArrayList
+         LinkList
+   ↪ Not order maintain
+     e.g. Set
+          Map 
+          Stack, Queue -> LIFO, FIFO
+
+💡 Understand Wording First.
+* iterate (access elements one by one)
+1. Iterable
+   - It "REPRESENT COLLECTION" whose elements can be iterated.
+   - It provides iterator()
+   - represent something iterable
+
+2. Iterator
+   - It is used to "ACCESS/TRAVERSE ELEMENTS 1 BY 1".
+   - Iterator provides:
+       hasNext(), next(), remove() methods
+   - Performs actions
+
+e.g. List<Integer> list = new ArrayList<>();
+     ↪ ArrayList extends collection
+        ↪ Collection extends Iterable
+           ↪ Iterable gives reference of Iterator
+              interface Iterable{
+                 Iterator<I> iterator();   // ref for iterator
+              }
+               ↪ interface Iterator{
+                    hasNext();
+                    next();
+                    etc....
+                  }
+- So indirectly ArrayList is implementing Iterable.
+  so it can give me definition of iterator(){}
+- ok naw listen Iterator{} is an interface so we cannot create it's object so 
+- let's say there is an inbuilt class ArrayListIterator which implements Iterator and access all it's methods e.g. next() and our ArrayList class returns obj which is "new ArrayListIterator()".
+- naw you can call hasNext(), next() etc...
+
+Let's create a structure of this so we will get better understanding:
+
+interface Iterable{
+   Iterator<I> iterator();
+}
+class ArrayList implements Iterable{
+   private Integer[] arr;
+   private int size;
+   constructor
+   methods like add(), remove(),....
+
+   @override
+   public Iterator iterator(){
+      return new ArrayListIterator();  
+   }
+
+   class ArrayListIterator implements Iterator{
+      int position = 0;
+      @override
+      public boolean hasNext(){
+         // naw for find next we must know size of array and we  can find size by method .size() from ArrayList
+         // But to use .size() we also need to create object of ArrayList inside ArrayListIterator
+         // if both are having there object into each other it will be confusing
+         // Here we can use concept of nested classes
+         // Naw we can access the ArrayList methods
+      }
+      @override
+      public int next(){
+         // same next logic will done as well 
+      }
+   }
+}
+
+new read below code you will get little idea that haw it's working:
+
+List<Integer> list = new ArrayList<>();
+Iterator<Integer> it = list.Iterator();
+while(it.hasNext()){
+   System.out.println(it.next());
+}
+
+THIS FUNCTIONALITY REMAIN SAME FOR ALL COLLECTIONS WITH SOME DIFF FEATURES AS PER COLLECTION.
+
+
+
+➤ ForEach loop
+   Naw look at this code don't you feel its complex not easy to understand?
+
+   List<Integer> list = new ArrayList<>();
+   Iterator<Integer> it = list.Iterator();
+   while(it.hasNext()){
+      System.out.println(it.next());
+   }
+
+
+that's why java introduced ForEach loop...!
+Above code you can write it like this
+
+List<Integer> list = new ArrayList<>();
+for (Integer num : list) {
+    System.out.println(num);
+}
+
+
+* Methods Of Iterable
+  I. iterator()
+ II. forEach()
+III. splitIterator()
+
+
+* Methods Of Iterator
+  I. hasNext() 
+ II. next()
+III. remove()
+ IV. forEachRemaining()
+
+➤ Concurrent Modification Exception
+   -  ConcurrentModificationException occurs when we modify a collection while iterating over it using an Iterator.
+   e.g. 
+        List<Integer> list = new ArrayList<>();
+        Iterator<Integer> it = list.ArrayList<>();
+        while(it.hasNext()){
+         Integer val = it.next();
+         list.remove(val); // ❌ May throw ConcurrentModificationException
+        }
+        WHY?
+        - Iterator expects collection to remain unchanged during iteration.
+        - If you remove the Iterator doesn't know about this modification.
+        Solution:
+        it.remove(); // ✅ Removes element through the Iterator itself.
+
+
+💡 Iterator does not have an add() method, cause it designed mainly for traversing a collection
 
 
 
@@ -991,11 +1146,31 @@ e.g. class Animal{}
 
 
 
+------------------------------------------------------------------------------ Day15 ----------------------------------------------------------------------------------
+
+
+📌Java Collection Interface Deep Dive | Methods & Internals | Java Full Course #31
+
+
+💡 utility class: - These are the classes which provides re-useable methods  to perform common task.
+                  - Mostly contains static methods so we don't need to create is object.
+                  - e.g.Math, Collections, Arrays, Objects
+
+collection <> c = any_concrete_class
+
+* There are 2 concepts in java
+    I. COLLECTION as interface
+   II. COLLECTIONS as class(utility class)
+
+- Collection contains all those methods which are common among all collections.
 
 
 
+------------------------------------------------------------------------------ Day16 ----------------------------------------------------------------------------------
 
-
+➤
+↪
+💡
 
 
 
@@ -1021,5 +1196,3 @@ EXTRA NOTES:
    so it will not create obj for those values it will find then reference of already bit objects. 
 
 5) "==" refers to reference.(Will check reference not value)
-
-

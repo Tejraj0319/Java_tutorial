@@ -11,11 +11,12 @@ Video No.	Exact video title
 16	        Encapsulation & Inheritance in Java | Java Packages & Super Keyword ✔	
 17	        Abstraction & Polymorphism in Depth | Abstract Class vs Interfaces ✔	
 18	        AutoBoxing, Abstract classes & POJOs ✔
+22          Most Important Class in Java | Object Class (equals, hashCode, toString)
 25	        Java Strings | String Pool, Immutability, Internals ✔
 26	        Java Strings Part 2 | All String Methods + StringBuilder vs StringBuffer ✔
 27	        Java Generics Deep Dive | Bounded Types using extends ✔
 29	        Java Collection Framework Explained | Data Structures + Complete Hierarchy ✔
-30	        Iterable Interface in Java | Why Iterator Exists? | For-Each Loop
+30	        Iterable Interface in Java | Why Iterator Exists? | For-Each Loop ✔
 31	        Java Collection Interface Deep Dive | Methods & Internals
 32	        Java List Interface Deep Dive | ArrayList, LinkedList, Vector, Stack
 33	        Set & Map Interface in Java | Internal Working of HashMap, HashSet & TreeMap
@@ -24,4 +25,4 @@ Video No.	Exact video title
 44	        Exception Hierarchy Deep Dive | throw vs throws | Custom Exceptions
 
 
-total: 19 videos.
+total: 20 videos.
